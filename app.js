@@ -16,3 +16,24 @@ function handleSubmit(event) {
       return false;
     }
   }
+
+  function countDown(){
+    const today = new Date().getTime();
+    const futureDate = new Date("2024-10-15T00:00:01").getTime();
+    
+    const timeDiff = futureDate - today;
+    
+    const days = Math.round( timeDiff / (1000 * 60 * 60 * 24 ) )
+    const hours = Math.round( timeDiff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const minutes = Math.round( timeDiff % (1000 * 60 * 60) / (1000 * 60))
+    const seconds = Math.round( timeDiff % (1000 * 60) / 1000)
+    
+    console.log(days, hours, minutes, seconds)
+   
+    document.getElementById("countdown").innerHTML = `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+  }
+  
+  setInterval(countDown, 1000)
+
+
+
